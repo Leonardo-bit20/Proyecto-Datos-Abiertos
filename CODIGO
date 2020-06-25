@@ -1,0 +1,48 @@
+#CODIGO UTILIZADO PARA EL SRAPING DE TWITTER
+
+
+library(rtweet)
+library(tidytext)
+library(ggpubr) 
+library(tidyverse)
+
+twitter_tokens <- create_token(app = "Donaciones covid", consumer_key = "ul3etSKs4Zqd7dZnnHuemiojU", consumer_secret = "dlhBRerazblU9fQGGYmyViS1TZsBrd4mHv1H1L4hKEU3OFpdmY")
+
+#consumerKey = "ul3etSKs4Zqd7dZnnHuemiojU"
+#consumerSecret = "dlhBRerazblU9fQGGYmyViS1TZsBrd4mHv1H1L4hKEU3OFpdmY"
+#accessToken = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+#accessSecret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+minsal <- get_timeline("@MinSaludBolivia", n = 3200)
+
+minsal <- minsal[c("created_at", "text", "favorite_count", "retweet_count")]
+write_as_csv(minsal, "minsal.csv")
+
+unitel <- get_timeline("@unitelbolivia", n = 3200)
+unitel <- unitel[c("created_at", "text", "favorite_count", "retweet_count")]
+write_as_csv(unitel, "unitel.csv")
+
+reduno <- get_timeline("@RedUnoBolivia", n = 3200)
+reduno <- reduno[c("created_at", "text", "favorite_count", "retweet_count")]
+write_as_csv(reduno, "reduno.csv")
+
+bolivision <- get_timeline("@BolivisionNoti", n = 3200)
+
+bolivision <- bolivision[c("created_at", "text", "favorite_count", "retweet_count")]
+write_as_csv(bolivision, "bolivision.csv")
+
+pat <- get_timeline("@patboliviatv", n = 3200)
+pat <- pat[c("created_at", "text", "favorite_count", "retweet_count")]
+write_as_csv(pat, "pat.csv")
+
+eldeber <- get_timeline("@grupoeldeber", n = 3200)
+eldeber <- eldeber[c("created_at", "text", "favorite_count", "retweet_count")]
+write_as_csv(eldeber, "eldeber.csv")
+
+larazon <- get_timeline("@LaRazon_Bolivia", n = 3200)
+larazon <- larazon[c("created_at", "text", "favorite_count", "retweet_count")]
+write_as_csv(larazon, "larazon.csv")
+
+boliviatv <- get_timeline("@Canal_BoliviaTV", n = 3200)
+boliviatv <- boliviatv[c("created_at", "text", "favorite_count", "retweet_count")]
+write_as_csv(boliviatv, "boliviatv.csv")
